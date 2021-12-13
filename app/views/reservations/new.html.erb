@@ -1,0 +1,11 @@
+<h1>reservations new</h1>
+
+<% simple_form_for(@reservation) do |f| %>
+
+    <%= f.association :user_id %>
+    <%= f.association :offer_id %>
+    <%= f.input :event_adress %>
+    <%= f.datetime :start_time %>
+    <%= f.datetime :end_time %>
+
+<% end %>
