@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_162956) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
