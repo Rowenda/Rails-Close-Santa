@@ -19,8 +19,13 @@ class ReservationsController < ApplicationController
     @reservation.user_id = @user
     # assigne la valeur de l'id correspondant a l'offre
     @reservation.offer_id = @offer
-    # enregistre
-    @reservation.save!
+    # si enregistrer rediriger vers la show de la reservation
+    # sinon remettre le form
+    if @reservation.save!
+      redirect_to reservation_path(@reservation)
+    else
+      render 'reservations/new'
+    end
     # attente des routes pour le if save redirect
   end
 
@@ -31,7 +36,8 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-   # a rediriger redirect_to ''
+    # voir si ya un s ou pas a offers
+    redirect_to offer_path
   end
 
   private
