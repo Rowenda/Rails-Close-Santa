@@ -1,0 +1,11 @@
+<h2>New offer</h2>
+<%= simple_form_for(@offer)  do |f| %>
+  <%= f.input :title %>
+  <%= f.input :location %>
+  <%= f.input :price_per_hour %>
+  <%= f.input :offer_description %>
+  <%= f.input :santa_description %>
+  <%= f.input :availability %>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Back to offers", offers_path %>
