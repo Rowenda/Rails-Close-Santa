@@ -7,6 +7,7 @@ class CreateOffers < ActiveRecord::Migration[6.1]
       t.text :offer_description
       t.string :title
       t.string :santa_description
+      # add references to users
 
       t.timestamps
     end
