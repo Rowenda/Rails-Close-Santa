@@ -1,0 +1,31 @@
+.pill {
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0px 1.5rem;
+    background-color: rgba(0, 0, 0, 0.087);
+    border-radius: 5rem;
+    white-space: nowrap;
+}
+
+.pill-color {
+    background-color: $green;
+    box-shadow: 0 0 2rem rgba(130, 255, 190, 0.180);
+    text-decoration: none;
+    color: white;
+    transition: 1s ease;
+
+}
+
+.pill-color:hover {
+    transition: 1s ease;
+    box-shadow: 0 0 5rem rgba(100, 255, 180, 0.8);
+    text-shadow: 0 0 1rem rgba(255, 255, 255, 0.5);
+}
+
+
+.pill-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Cinzel";
+}
