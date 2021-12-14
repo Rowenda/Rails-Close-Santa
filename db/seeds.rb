@@ -9,13 +9,13 @@
 require 'date'
 
 # Users
-johndoe = User.create(firstname: "John", lastname: "Doe", email: "johndoe@yahoo.fr", password: "azerty")
-paulmaccartney = User.create(firstname: "Paul", lastname: "MacCartney", email: "paulmaccartney@lycos.org",
-                             password: "qwerty1")
-lennon = User.create(firstname: "John", lastname: "Lennon", email: "johnlennon@gmail.com", password: "johnlemon")
-mathilda = User.create(firstname: "Mathilda", lastname: "Sorich", email: "mathildanana@hotmail.fr", password: "pognon")
-romeo = User.create(firstname: "Roméo", lastname: "Montaigu", email: "romeromontacru@hotmail.fr", password: "juliette")
-santa = User.create(firstname: "Santa", lastname: "Clause", email: "santaclause@google.lap", password: "hohoho")
+johndoe = User.create!(firstname: "John", lastname: "Doe", email: "johndoe@yahoo.fr", password: "azerty")
+paulmaccartney = User.create!(firstname: "Paul", lastname: "MacCartney", email: "paulmaccartney@lycos.org",
+                              password: "qwerty1")
+lennon = User.create!(firstname: "John", lastname: "Lennon", email: "johnlennon@gmail.com", password: "johnlemon")
+mathilda = User.create!(firstname: "Mathilda", lastname: "Sorich", email: "mathildanana@hotmail.fr", password: "pognon")
+romeo = User.create!(firstname: "Roméo", lastname: "Montaigu", email: "romeromontacru@hotmail.fr", password: "juliette")
+santa = User.create!(firstname: "Santa", lastname: "Clause", email: "santaclause@google.lap", password: "hohoho")
 
 # Offers
 
@@ -91,20 +91,21 @@ offers8.save!
 
 # Reservation
 
+
 reservation1 = Reservation.new(event_adress: "27 avenue Thiers, Nice", status: "not begun", start_time:
                               Time.new(2021, 12, 23, 8, 24, 45), end_time: Time.new(2021, 12, 23, 10, 24, 45))
-reservation1.user = lennon.id
-reservation1.offer = offers1.id
+reservation1.user = lennon
+reservation1.offer = offers1
 reservation1.save!
 
 reservation2 = Reservation.new(event_adress: "30 Rue Henri Paschke, Cannes", status: "not begun", start_time:
   Time.new(2021, 12, 25, 9, 30), end_time: Time.new(2021, 12, 25, 10, 30))
-reservation2.user = mathilda.id
-reservation2.offer = offers3.id
+reservation2.user = mathilda
+reservation2.offer = offers3
 reservation2.save!
 
-reservation2 = Reservation.new(event_adress: "30 Rue Henri Paschke, Cannes", status: "not begun", start_time:
+reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", status: "not begun", start_time:
   Time.new(2021, 12, 18, 22, 30), end_time: Time.new(2021, 12, 19, 4))
-reservation2.user = mathilda.id
-reservation2.offer = offers7.id
+reservation2.user = mathilda
+reservation2.offer = offers7
 reservation2.save!
