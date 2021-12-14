@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_12_13_162956) do
+=======
+ActiveRecord::Schema.define(version: 2021_12_13_165624) do
+>>>>>>> 411d14d74b977eb127709e5f946a0977ee4045b6
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +28,11 @@ ActiveRecord::Schema.define(version: 2021_12_13_162956) do
     t.string "santa_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+>>>>>>> 411d14d74b977eb127709e5f946a0977ee4045b6
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -51,5 +60,6 @@ ActiveRecord::Schema.define(version: 2021_12_13_162956) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "offers", "users"
   add_foreign_key "reservations", "users"
 end
