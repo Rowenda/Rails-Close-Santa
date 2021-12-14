@@ -21,6 +21,12 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to dasboard_offers_path
+  end
+
   def offer_params
     params.require(:offer).permit(:title, :availability, :location, :price_per_hour, :offer_description, :santa_description)
   end

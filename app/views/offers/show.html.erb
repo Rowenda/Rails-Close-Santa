@@ -7,3 +7,18 @@
 <p><%= @offer.price_per_hour %></p>
 <%= link_to "Back to offers", offers_path %>
 <%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
+
+<%# a voir pas accesible pour le moment %>
+<%# lien delete %>
+<%# <%= link_to "Delete #{@offer.title}",
+            destroy_offer_path(@offer),
+            method: :delete,
+            data: { confirm: "Are you sure?" }manquue fermetuture chevron percent %>
+
+
+<% if current_user == @offer.user %>
+<%= link_to "Delete #{@offer.title}",
+            offer_path(@offer),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<% end %>
