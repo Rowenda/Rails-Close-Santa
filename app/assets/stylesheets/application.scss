@@ -9,10 +9,14 @@
 // @import "font-awesome";
 
 // Your CSS partials
+@import "_responsive";
 @import "components/index";
+@import "components/pills";
+@import "components/navbar";
+@import "components/search";
 @import "pages/index";
 
 body {
-  background-color: darkgreen;
+  background-color: $lightred;
   margin: 0;
 }

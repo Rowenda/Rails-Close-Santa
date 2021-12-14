@@ -1,18 +1,55 @@
 // Specific CSS for your home-page
-header {
-  background-image: url('https://source.unsplash.com/random/?christmas,santa/1920x1080');
-  width: 100%;
-  height: 16rem;
+
+$borderadius: 1rem;
+$bshadow: 0 0 30rem rgba(0, 0, 0, 0.601);
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  @extend .center;
+}
+.first-card {
+  background-image: url('https://source.unsplash.com/collection/8981385/1000x1000');
+  margin-top: 2.5rem;
+  width: calc(100vw - 8rem);
+  height: calc(100vh - 10rem);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: opacity(80%);
+  border-radius: $borderadius;
+  box-shadow: $bshadow;
+  text-align: center;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.313);
+  h2{
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+  font-size: 5vh;
+  font-family: 'Cinzel';
+  }
+  h1{
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+  font-size: 10vh;
+  font-family: 'Cinzel';
+  }
+  p{
+    font-size: 2,5rem;
+  }
 }
 
-.background-filter {
-  backdrop-filter: grayscale(70%);
+.filter-div {
+  background-color: rgba(49, 10, 10, 0.656) ;
+  -webkit-backdrop-filter: saturate(20%); ;
+  backdrop-filter: saturate(10%);
   width: 100%;
   height: 100%;
+  border-radius: $borderadius;
+  @extend .center;
 }
 
 header {
@@ -24,12 +61,31 @@ header {
   color: blanchedalmond;
 }
 
-.display-home {
-  margin-top: 2rem;
+.second-card {
+  background-color: rgba(49, 10, 10, 0.656) ;
+  margin: 2.5rem 0;
+  width: calc(100vw - 8rem);
+  height: calc(100vh - 10rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border-radius: $borderadius;
+  box-shadow: $bshadow;
+
+
   .display-text{
+    padding: 5vw;
     display: grid;
-    grid-template-columns: 1fr 1fr;
   }
+}
+
+hr {
+    border: 1px solid blanchedalmond;
+    text-align: center;
+    width: 10vh ;
+    margin-top: 3vh;
+}
+
+#map iframe {
+    height: 100%;
+    width: 100%;
 }
