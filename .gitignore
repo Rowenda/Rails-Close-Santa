@@ -40,3 +40,10 @@ yarn-debug.log*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+
+# Ignore gemfile and gemfile.lock to abort error when pull on different computer
+/gemfile
+/gemfile.lock
+
+#Ignore db/schema.rb
+db/schema.rb
