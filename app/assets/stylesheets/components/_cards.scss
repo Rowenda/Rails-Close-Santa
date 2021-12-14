@@ -1,0 +1,70 @@
+$radcard : 0.5rem;
+
+.cards-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.card-img {
+  height: 15rem;
+  font-size: 1.3rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: $radcard $radcard 0 0;
+}
+
+.card {
+  border-radius: $radcard ;
+  transition: 0.5s ease;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.275);
+  background:none;
+}
+
+.card:hover {
+  transition: 0.5s ease;
+  animation: cardmove 0.7s infinite;
+  transform:rotate(2deg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.611);
+  transition: ease;
+ .btmcontent{
+  background-color: white;
+ }
+}
+
+@keyframes cardmove {
+  50% {transform:rotate(-2deg);
+}
+}
+
+.btmcontent {
+  border-radius: 0 0 $radcard $radcard;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: $lightred;
+  background-color: rgba(255, 255, 255, 0.878);
+  color: rgb(49, 49, 49);
+}
+
+.btmcontent{
+  h1, h2, h3, h4, h5, h6 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+}
+
+.price{
+  color: $green;
+  font-weight: bold;
+}
+
+.btmcontent-right {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ text-align: right;
+}

@@ -1,2 +1,35 @@
 // Import page-specific CSS files here.
 @import "home";
+
+#top-message{
+  text-align: center;
+  margin: 6rem 0 ;
+  font-family: "Mountains of Christmas";
+  font-size: 5rem;
+  color: white;
+  text-shadow: 0 0 8rem rgb(255, 255, 255);
+  transform:rotate(-0.5deg);
+  animation: mymove 1s infinite;
+}
+
+@keyframes mymove {
+  50% {transform:rotate(1deg);
+    text-shadow: 0 0 3rem rgba(255, 255, 255, 0.741);}
+}
+
+.bouton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  margin-top: -4rem;
+  margin-bottom: 5rem;
+  transform:rotate(3deg);
+  animation: btnmove 1s infinite;
+}
+
+@keyframes btnmove {
+  50% {transform:rotate(-3deg);
+}
+}

@@ -1,6 +1,40 @@
-<h2>Index</h2>
-<% @offers.each do |offer| %>
-  <p><%= link_to offer.title, offer_path(offer) %></p>
+<%#😶‍🌫️  <% @offers.each do |offer| %>
+<%#😶‍🌫️  <p><%= link_to offer.title, offer_path(offer) %>   <%#😶‍🌫️   </p>
+<%#😶‍🌫️  <% end %>
+<%#😶‍🌫️  <%= link_to "Create a new offer", new_offer_path %>
+
+<%# face base number outside loop%>
+<% number = 1 %>
+
+<%# top-message %>
+<h1 id="top-message">🎄 Choose your Santa<h1>
+<div class="bouton">
+<%= link_to "add yours!", new_offer_path, class:"pill pill-color"%>
+</div>
+
+
+<%# Content %>
+<div class="cards-content" id="column-small">
+
+<%# face loop / to change with local file %>
+<%19.times do%> <% random = number%>
+<% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
+<% number += 1%>
+
+<div class="card">
+<div class="card-img" style="background-image: url(<%=face%>);">
+</div>
+<div class="btmcontent">
+  <div>
+  <h6>Titre de l'annonce</h6>
+  <h4 class="price"> 10$/h</h4>
+  </div>
+  <div class="btmcontent-right">
+  <h6>dispo<h6> <h6>ville<h6>
+  </div>
+</div>
+</div>
+
+
+<%# end loop%>
 <% end %>
-<%= link_to "Create a new offer", new_offer_path %>
-<%= link_to 'offers', offers_path %>
