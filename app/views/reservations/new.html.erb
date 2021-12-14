@@ -1,11 +1,11 @@
 <h1>reservations new</h1>
 
-<% simple_form_for(@reservation) do |f| %>
+<%= simple_form_for(@reservation) do |f| %>
 
-    <%= f.association :user_id %>
-    <%= f.association :offer_id %>
+>
     <%= f.input :event_adress %>
-    <%= f.datetime :start_time %>
-    <%= f.datetime :end_time %>
+    <%= f.input :start_time, as: :date, html5: true %>
+    <%= f.input :end_time, as: :date, html5: true %>
+    <%= f.submit %>
 
 <% end %>

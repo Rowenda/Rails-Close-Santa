@@ -8,17 +8,15 @@ class ReservationsController < ApplicationController
 
   def create
     # pas encore tester
-    # recupere l'user
-    @user = User.find(params[:user_id])
-    # recupere l'offre
-    @offer = Offer.find(params[:offer_id])
+    # recupere l'offre en attente de la table
+                      # @offer = Offer.find(params[:offer_id])
     # assigne variable d'instance reservation nouvelle reservation avec params
     # de la fonction privee reservation params
     @reservation = Reservation.new(reservation_params)
     # assigne la valeur de l'id correspondant a l'user
-    @reservation.user_id = current_user
+    @reservation.user = current_user
     # assigne la valeur de l'id correspondant a l'offre
-    @reservation.offer_id = @offer #ou @user
+   # @reservation.offer_id = @offer #ou @user
     # si enregistrer rediriger vers la show de la reservation
     # sinon remettre le form
     if @reservation.save!

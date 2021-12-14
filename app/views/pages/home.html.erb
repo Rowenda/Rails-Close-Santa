@@ -1,4 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to 'edit', edit_user_registration_path %>
+ <p>edit account registration</p>
+<%= link_to 'edit', edit_user_registration_path(@user) %>
+<p>test reservation</p>
+<%= link_to 'nouvelle reservation', new_reservation_path %>
