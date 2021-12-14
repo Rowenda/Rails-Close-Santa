@@ -9,14 +9,14 @@
 <%# top-message %>
 <h1 id="top-message">🎄 Choose your Santa<h1>
 <div class="bouton">
-<%= link_to "add yours!", "#", class:"pill pill-color"%>
+<%= link_to "add yours!", new_offer_path, class:"pill pill-color"%>
 </div>
 
 
 <%# Content %>
 <div class="cards-content" id="column-small">
 
-<%# face loop%>
+<%# face loop / to change with local file %>
 <%19.times do%> <% random = number%>
 <% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
 <% number += 1%>
