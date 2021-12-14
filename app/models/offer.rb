@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
-  # belongs_to :users
+  belongs_to :user
+  has_many :reservations
   validates :title, presence: true
   validates :availability, presence: true
   validates :location, presence: true
