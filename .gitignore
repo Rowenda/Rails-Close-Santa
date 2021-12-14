@@ -42,8 +42,8 @@ yarn-debug.log*
 .DS_Store
 
 # Ignore gemfile and gemfile.lock to abort error when pull on different computer
-/gemfile
-/gemfile.lock
+Gemfile
+Gemfile.lock
 
 #Ignore db/schema.rb
 db/schema.rb
