@@ -4,10 +4,19 @@
 @import "config/bootstrap_variables";
 
 // External libraries
-// @import "bootstrap/scss/bootstrap";
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 // Your CSS partials
+@import "_responsive";
 @import "components/index";
+@import "components/pills";
+@import "components/navbar";
+@import "components/search";
 @import "pages/index";
+
+body {
+  background-color: $lightred;
+  margin: 0;
+}
