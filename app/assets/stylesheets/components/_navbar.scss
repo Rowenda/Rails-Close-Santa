@@ -1,35 +1,17 @@
-// Le Wagon Personal CSS ----
-
-// .navbar-lewagon {
-//   justify-content: space-between;
-//   background: white;
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
-
 .navbar {
-    // delete if responsive implementation
-    min-width: 820px;
-    // -----------------------------------
-    color: white;
-    height: 6rem;
-    background: linear-gradient(0deg, rgba(68, 39, 39, 0.478) 0%, rgb(68, 39, 39) 100%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    padding: 0 2rem;
-    box-shadow: 0 0 40rem black;
-    backdrop-filter: blur(30px) saturate(120%);
-    -webkit-backdrop-filter: blur(30px) saturate(120%);
+  color: white;
+  height: 5rem;
+  background: linear-gradient(0deg, rgba(110, 58, 58, 0.437) 0%, rgba(132, 68, 68, 0.56) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0 2rem;
+  box-shadow: 0 0 40rem rgba(0, 0, 0, 0.252);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
 }
 
 .navbar h2{
@@ -39,31 +21,7 @@ margin-block-start: 0;
 
 }
 
-.pill {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    padding: 0px 1.5rem;
-    background-color: rgba(0, 0, 0, 0.087);
-    border-radius: 5rem;
-    white-space: nowrap;
-}
-
-.search{
-  border: solid 0px;
-  background-color: rgba(255, 255, 255, 0.793);
-  color: rgba(0, 0, 0, 0.82);
-  flex-grow: 1;
-  margin: 0 3rem;
-  max-width: 30rem;
-}
-
 #logo-fix {
     font-size: 3rem;
     margin: 0 1rem 1px 0;
-}
-
-.button-color {
-    background-color: rgba(227, 86, 86, 0.827);
-    box-shadow: 0 0 2rem rgba(255, 92, 92, 0.266);
 }
