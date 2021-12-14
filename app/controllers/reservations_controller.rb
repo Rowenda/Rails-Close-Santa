@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.offer = @offer
     if @reservation.save!
-      redirect_to reservation_path(@reservation)
+      redirect_to reservation_path(@reservation), notice: "creation success"
     else
       render 'reservations/new'
     end
@@ -27,8 +27,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    # voir si ya un s ou pas a offers
-    redirect_to offer_path, notice: 'destroy succefully'
+    redirect_to offers_path, notice: 'destroy successfully'
   end
 
   private
