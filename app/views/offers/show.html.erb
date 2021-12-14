@@ -6,4 +6,4 @@
 <p><%= @offer.location %></p>
 <p><%= @offer.price_per_hour %></p>
 <%= link_to "Back to offers", offers_path %>
-<%= link_to 'reserver', new_offer_reservation_path(@offer.id) %>
+<%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
