@@ -1,0 +1,25 @@
+<h1>dashboard</h1>
+
+
+
+<div class='container'>
+<h2>MY OFFERS</h2>
+  <div class='offer-dashboard'>
+      <% @offers.each do |offer| %>
+      <div class='offer-link'>
+        <p>offer : <%=link_to "#{offer.title}", offer_path(offer) %></p>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<div class='container'>
+<h2>MY RESERVATION</h2>
+  <div class='offer-dashboard'>
+      <% @reservations.each do |reservation| %>
+      <div class='reservation-link'>
+        <p>reservation : <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
+        </div>
+      <% end %>
+  </div>
+</div>

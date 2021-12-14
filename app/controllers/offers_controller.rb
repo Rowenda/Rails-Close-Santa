@@ -21,6 +21,11 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def dashboard
+    @offers = Offer.where(user_id: current_user)
+    @reservations = Reservation.where(user_id: current_user)
+  end
+
   def offer_params
     params.require(:offer).permit(:title, :availability, :location, :price_per_hour, :offer_description, :santa_description)
   end

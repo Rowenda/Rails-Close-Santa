@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :offers, except: [:edit, :destroy] do
     resources :reservations, only: [:new, :create]
     collection do
-      get :dasboard
+      get :dashboard
     end
   end
   resources :reservations, only: [:show, :destroy]
