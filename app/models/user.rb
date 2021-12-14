@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :reservations
   has_many :offers
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
