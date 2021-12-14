@@ -1,4 +1,7 @@
-@media(max-width: 700px) {
+@media(max-width: 900px) {
+  #column-small{
+  grid-template-columns: 1fr 1fr;
+  }
   #hide-sm {
       display: none;
   }
