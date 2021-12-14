@@ -4,27 +4,20 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @user = current_user
+    @offer = Offer.find(params[:offer_id])
   end
 
   def create
-    # pas encore tester
-    # recupere l'offre en attente de la table
-                      # @offer = Offer.find(params[:offer_id])
-    # assigne variable d'instance reservation nouvelle reservation avec params
-    # de la fonction privee reservation params
+    @offer = Offer.find(params[:offer_id])
     @reservation = Reservation.new(reservation_params)
-    # assigne la valeur de l'id correspondant a l'user
     @reservation.user = current_user
-    # assigne la valeur de l'id correspondant a l'offre
-   # @reservation.offer_id = @offer #ou @user
-    # si enregistrer rediriger vers la show de la reservation
-    # sinon remettre le form
+    @reservation.offer = @offer
     if @reservation.save!
-      redirect_to reservation_path(@reservation), notice: "succefully"
+      redirect_to reservation_path(@reservation), notice: "creation success"
     else
       render 'reservations/new'
     end
-    # attente des routes pour le if save redirect
   end
 
   def show
@@ -34,13 +27,12 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    # voir si ya un s ou pas a offers
-    redirect_to offer_path, notice: 'destroy succefully'
+    redirect_to offers_path, notice: 'destroy successfully'
   end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:event_adress, :start_time, :end_time, :status)
+    params.require(:reservation).permit(:event_adress, :start_time, :end_time)
   end
 end
