@@ -10,6 +10,6 @@
 
 <%# pour que le createur de l'offre ne puisse pas la reserver %>
 
-<% unless @offer.user_id == current_user.id %>
+<% unless @offer.user_id == current_user %>
 <%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
 <% end %>
