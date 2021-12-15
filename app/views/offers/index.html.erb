@@ -9,6 +9,7 @@
 <%# top-message %>
 <h1 id="top-message">🎄 Choose your Santa<h1>
 <div class="bouton-index">
+
 <%= link_to "add yours!", new_offer_path, class:"pill pill-color"%>
 </div>
 
@@ -16,52 +17,30 @@
 <%# Content %>
 <div class="cards-content" id="column-small">
 
-<%# face loop / to change with local file %>
-<%19.times do%> <% random = number%>
-<% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
-<% number += 1%>
+  <%# change with local file %>
+  <% @offers.each do |offer| %>
+    <% random = number%>
+    <% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
+    <% number += 1%>
 
-<div class="card">
-<div class="card-img" style="background-image: url(<%=face%>);">
-</div>
-<div class="btmcontent">
-  <div>
-  <h6>Titre de l'annonce</h6>
-  <h4 class="price"> 10$/h</h4>
-  </div>
-  <div class="btmcontent-right">
-  <h6>dispo<h6> <h6>ville<h6>
-  </div>
-</div>
-</div>
+    <div class="card">
+    <%= link_to offer_path(offer) do %>
 
+        <div class="card-img" style="background-image: url(<%= cl_image_path offer.photo.key, height: 250, width: 600, crop: :fill %>);">
+        </div>
 
-<%# end loop%>
-<% end %>
-
-<%# insertion des offres pour virgil %>
-
-<% @offers.each do |offer| %>
-
-<% random = number%>
-<% number += 1%>
-<% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
-
-<div class="card">
-<%# pour ajouter les descriptions (offer.santa_description & offer.description %>
-<div class="card">
-<div class="card-img" style="background-image: url(<%=face%>);">
-</div>
-<div class="btmcontent">
-  <div>
-  <h6><%= offer.title %></h6>
-  <h4 class="price"> <%= offer.price_per_hour %></h4>
-  </div>
-  <div class="btmcontent-right">
-  <h6><%= offer.availability %><h6> <h6><%= offer.location%><h6>
-
-  </div>
-</div>
+      <div class="btmcontent">
+        <div>
+          <h6><%= offer.title %></h6>
+          <h4 class="price">  <%= offer.price_per_hour %></h4>
+        </div>
+        <div class="btmcontent-right">
+          <h6><%= offer.availability %><h6> <h6><%= offer.location%><h6>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
 </div>
 
-<% end %>
+<%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
