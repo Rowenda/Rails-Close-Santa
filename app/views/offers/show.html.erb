@@ -13,3 +13,14 @@
 <% unless @offer.user_id == current_user.id %>
 <%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
 <% end %>
+
+
+
+
+
+<% if @offer.user == current_user %>
+<%= button_to "reject",
+            @offer,
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<% end %>
