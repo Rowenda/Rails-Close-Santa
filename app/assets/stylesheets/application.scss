@@ -15,7 +15,14 @@
 @import "components/navbar";
 @import "components/search";
 @import "components/cards";
+@import "components/boutons";
 @import "pages/index";
+@import "pages/new";
+@import "pages/show";
+
+html {
+  margin: 0;
+}
 
 body {
   background-color: $lightred;
@@ -45,4 +52,9 @@ a:visited {
 a {
   text-decoration: none;
   color:unset;
+}
+
+// to kill a bottom margin
+.notice{
+  margin:0;
 }

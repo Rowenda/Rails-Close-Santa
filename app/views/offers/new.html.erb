@@ -1,5 +1,7 @@
 <h1 id="top-message"> 🎅🏻 Your Santa<br>Prestation 💰 <h1>
 
+<div class="d-flex justify-content-center">
+<div class="fcontent">
 <%= simple_form_for(@offer)  do |f| %>
   <%= f.input :title %>
   <%= f.input :location %>
@@ -7,6 +9,11 @@
   <%= f.input :offer_description %>
   <%= f.input :santa_description %>
   <%= f.input :availability %>
-  <%= f.submit %>
+  <%= f.input :photo, as: :file %>
+  <div class="d-flex justify-content-center">
+  <%= link_to "back to offers", offers_path, :id => "black-btn-form" %>
+  <%= f.submit "publish", :id => "green-btn-form" %> <br>
+  </div>
 <% end %>
-<%= link_to "Back to offers", offers_path %>
+</div>
+</div>
