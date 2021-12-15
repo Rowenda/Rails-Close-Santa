@@ -38,3 +38,30 @@
 
 <%# end loop%>
 <% end %>
+
+<%# insertion des offres pour virgil %>
+
+<% @offers.each do |offer| %>
+
+<% random = number%>
+<% number += 1%>
+<% face = "https://www.virgilearlaud.fr/wagon/faces/#{random}.jpeg"%>
+
+<div class="card">
+<%# pour ajouter les descriptions (offer.santa_description & offer.description %>
+<div class="card">
+<div class="card-img" style="background-image: url(<%=face%>);">
+</div>
+<div class="btmcontent">
+  <div>
+  <h6><%= offer.title %></h6>
+  <h4 class="price"> <%= offer.price_per_hour %></h4>
+  </div>
+  <div class="btmcontent-right">
+  <h6><%= offer.availability %><h6> <h6><%= offer.location%><h6>
+
+  </div>
+</div>
+</div>
+
+<% end %>
