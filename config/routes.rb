@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       get :dashboard
     end
   end
-  resources :reservations, only: [:show, :destroy]
+  resources :reservations, only: [:show, :destroy] do
+    # new route to change the status of the reservation
+    get :accept_status
+  end
   # don't forget to except "edit and destroy" to nest with users routes
 end

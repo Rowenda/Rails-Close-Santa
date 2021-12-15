@@ -30,6 +30,13 @@ class ReservationsController < ApplicationController
     redirect_to offers_path, notice: 'destroy successfully'
   end
 
+  def accept_status
+    @reservation = Reservation.find(params[:reservation_id])
+    @reservation.status = "accepted"
+    @reservation.save!
+    redirect_to dashboard_offers_path
+  end
+
   private
 
   def reservation_params

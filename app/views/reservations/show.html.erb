@@ -1,5 +1,14 @@
 <h1>reservation show</h1>
 
-<%= @reservation.event_adress %>
-<%= @reservation.start_time %>
-<%= @reservation.end_time %>
+<p><%= @reservation.event_adress %></p>
+<p><%= @reservation.start_time %></p>
+<p><%= @reservation.end_time %></p>
+<p><%= @reservation.status %></p>
+
+<% if @reservation.status == "pending" %>
+  <%= link_to "accept", reservation_accept_status_path(@reservation) %>
+  <%# <%= link_to "reject",
+                  dashboard_offers_path,
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %> %>
+<% end %>
