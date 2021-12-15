@@ -6,5 +6,10 @@
 <p><%= @offer.location %></p>
 <p><%= @offer.price_per_hour %></p>
 <%= link_to "Back to offers", offers_path %>
-<%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
 
+
+<%# pour que le createur de l'offre ne puisse pas la reserver %>
+
+<% unless @offer.user_id == current_user.id %>
+<%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
+<% end %>

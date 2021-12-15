@@ -21,6 +21,11 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def dashboard
+    @offers = Offer.where(user_id: current_user)
+    @reservations = Reservation.where(user_id: current_user)
+  end
+
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy
