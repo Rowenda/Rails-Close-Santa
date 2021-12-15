@@ -28,8 +28,9 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
+    puts 'success destroy -_-'
     @offer.destroy
-    redirect_to dasboard_offers_path
+    redirect_to dashboard_offers_path
   end
 
   def offer_params

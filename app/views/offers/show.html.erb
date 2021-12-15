@@ -28,6 +28,15 @@
 <% unless @offer.user_id == current_user %>
 <%= link_to '❤️ Reserve !', new_offer_reservation_path(@offer), class: "bouton-green" %>
 <% end %>
+
+
+<% if @offer.user == current_user %>
+<%= button_to "reject",
+            @offer,
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<% end %>
+
 </div><%# end of picture%>
 
 </div><%# end of content%>
