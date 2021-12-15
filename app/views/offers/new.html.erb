@@ -1,5 +1,6 @@
 <h1 id="top-message"> 🎅🏻 Your Santa<br>Prestation 💰 <h1>
 
+<div class="form-content">
 <%= simple_form_for(@offer)  do |f| %>
   <%= f.input :title %>
   <%= f.input :location %>
@@ -10,3 +11,4 @@
   <%= f.submit %>
 <% end %>
 <%= link_to "Back to offers", offers_path %>
+</div>
