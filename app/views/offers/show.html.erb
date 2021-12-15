@@ -1,21 +1,33 @@
-<h2>Show</h2>
-<p><%= @offer.title %></p>
-<p><%= @offer.offer_description %></p>
+<div class="show-content">
+
+
+<div class="show-description-content">
+<h2>Say Hello to <%=@offer.user.firstname%> ! 👋 </h2>
+<h2 id="subtitle"><%= @offer.title %></h2>
+  <hr>
+<h3>Here is more about <%=@offer.user.firstname%>:</h3>
 <p><%= @offer.santa_description %></p>
-<p><%= @offer.availability %></p>
-<p><%= @offer.location %></p>
-<p><%= @offer.price_per_hour %></p>
-<%= link_to "Back to offers", offers_path %>
+<br>
+<h3>Why <%=@offer.user.firstname%> ?</h3>
+<br>
+<p><%= @offer.offer_description %></p>
+<br>
+<h3>Our santa disponibility: </h3>
+<p><b>The <%= @offer.availability.to_time.strftime('%e %B %Y') %></b> in <%= @offer.location %></p>
+<br>
+<h3>price per hour: </h3>
+<h4><%= @offer.price_per_hour %> $</h4 >
+</div><%# end of description%>
 
 
+
+
+<div class="show-picture-content" style="  background-image:url('https://source.unsplash.com/collection/8981385/200x500');">
+<%= link_to "😒 Go Back", offers_path, :class => "bouton-black" %>
 <%# pour que le createur de l'offre ne puisse pas la reserver %>
-
-<% unless @offer.user_id == current_user.id %>
-<%= link_to 'reservation', new_offer_reservation_path(@offer.id) %>
+<% unless @offer.user_id == current_user %>
+<%= link_to '❤️ Reserve !', new_offer_reservation_path(@offer), class: "bouton-green" %>
 <% end %>
-
-
-
 
 
 <% if @offer.user == current_user %>
@@ -24,3 +36,7 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
 <% end %>
+
+</div><%# end of picture%>
+
+</div><%# end of content%>
