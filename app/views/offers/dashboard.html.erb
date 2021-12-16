@@ -15,7 +15,9 @@
           <% if offer.user.id == current_user.id %>
             <p>My offer's reservations</p>
             <% offer.reservations.each do |reservation| %>
-              <p><%= reservation.event_adress %> <%= reservation.start_time %> <%= reservation.end_time %> <%= reservation.status %></p>
+              <p>Adress: <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
+              <p>Time: <%= reservation.start_time %> <%= reservation.end_time %></p>
+              <p>Status: <%= reservation.status %></p>
                 <% if reservation.status == "pending" %>
                   <%= link_to "accept", reservation_accept_status_path(reservation) %>
                   <%= link_to "reject",
@@ -34,10 +36,10 @@
   <div class='offer-dashboard'>
     <% @reservations.each do |reservation| %>
       <div class='reservation-link'>
-        <p>reservation : <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %> <%= reservation.status %>
-        <%# <%= reservation.start_time %>
-        <%# <%= reservation.end_time %>
-        </p>
+        <p>Address: <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
+        <p><%= reservation.start_time %></p>
+        <p><%= reservation.end_time %></p>
+        <p>Status: <%= reservation.status %></p>
       </div>
     <% end %>
   </div>
