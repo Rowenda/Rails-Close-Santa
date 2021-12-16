@@ -1,4 +1,15 @@
 <div class="navbar">
+
+<%# function for display 🎅🏻 or 🧑🏻 %>
+<% if user_signed_in? %>
+<% if current_user.offers.present?%>
+<% is_santa = "🎅🏻" %>
+<% else %>
+<% is_santa = "🧑🏻" %>
+<% end %>
+<% end %>
+
+<%# 🟡 logo ---------------------------- %>
 <%= link_to root_path do %>
         <div class="pill">
             <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/santa-claus_light-skin-tone_1f385-1f3fb_1f3fb.png" height="50" id="logo-fix">
@@ -6,33 +17,38 @@
         </div>
 <% end %>
 
+<%# 🟡 boutons ---------------------------- %>
+
 <%# ajout du si connecter button log_out sinon sign_up %>
 <%# penser a faire button sign_in a la place de sign_up et dans la vu du sign in un boutton sign_up %>
-       <% unless user_signed_in? %>
-       <%= link_to user_session_path do %>
-       <h2 class="pill pill-color">log in 🎄</h2>
+      <% unless user_signed_in? %>
 
-        <%# <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm"> %>
-       <%= link_to new_user_registration_path do %>
-       <h2 class="pill pill-color">inscription 🎄</h2>
-       <% end %>
-    </div>
-       <% end %>
-    </div>
+      <div class="navbar-btn-flex">
+      <%# 🟡 inscription ---------------------- %>
+      <%= link_to new_user_registration_path do %>
+      <h2 class="pill pill-color">registration</h2>
+      <%# 🟡 login ---------------------------- %>
+      <%= link_to user_session_path do %>
+      <h2 class="pill pill-color-white left-pill-margin">👤 login</h2>
+      <% end %>
+      <% end %>
+      </div>
 
     <% else %>
-
-        <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm">
-       <%= link_to destroy_user_session_path, :method => :delete do %>
-       <h2 class="pill pill-color">log_out 🎄</h2>
-
-              <%= link_to dashboard_offers_path do %>
-       <h2 class="pill pill-color"> <%= current_user.firstname %> 🎄</h2>
-       <% end %>
-
-
-       <% end %>
-
-
-    </div>
+      <div class="navbar-btn-flex">
+      <%# 🟡 log-out ---------------------------- %>
+      <%= link_to destroy_user_session_path, :method => :delete do %>
+      <h2 class="pill pill-color-white">log-out</h2>
+      <%# 🟡 dashboard ---------------------------- %>
+      <%= link_to dashboard_offers_path do %>
+      <h2 class="pill pill-color left-pill-margin"> <%= current_user.firstname %> <%=is_santa%> </h2>
     <% end %>
+    <% end %>
+      </div>
+    <% end %>
+
+</div>
+
+
+<%# 🟡 deprecied search bar  ---------------------------- %>
+<%# <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm"> %>

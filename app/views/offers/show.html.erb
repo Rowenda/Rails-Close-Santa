@@ -31,10 +31,11 @@
 
 
 <% if @offer.user == current_user %>
-<%= link_to "Delete offer",
+<%= button_to "🗑 Delete",
             @offer,
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
+            data: { confirm: "Are you sure?" },
+            class: "bouton-red"%>
 <% end %>
 
 </div><%# end of picture%>

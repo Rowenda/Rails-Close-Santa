@@ -1,4 +1,4 @@
-<h1 id="top-message"> 🎅🏻 Your Santa<br>Prestation 💰 <h1>
+<h2 id="top-message"> 🎅🏻 Your Santa<br>Prestation 💰 </h2>
 
 <div class="d-flex justify-content-center">
 <div class="fcontent">
@@ -9,10 +9,10 @@
   <%= f.input :offer_description %>
   <%= f.input :santa_description %>
   <%= f.input :availability %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photo, as: :file%>
   <div class="d-flex justify-content-center">
   <%= link_to "back to offers", offers_path, :id => "black-btn-form" %>
-  <%= f.submit "publish", :id => "green-btn-form" %> <br>
+  <%= f.submit "publish", :id => "green-btn-form" %>
   </div>
 <% end %>
 </div>
