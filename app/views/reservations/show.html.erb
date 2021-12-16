@@ -11,7 +11,7 @@
     <%= link_to "Accept", reservation_accept_status_path(@reservation) %>
     <%= link_to "Reject", reservation_reject_status_path(@reservation) %>
   <% end %>
-<% end %>reservation_start
+<% end %>
 
 <%# if the current user is the user who created the reservation %>
 <% if @reservation.user.id == current_user.id %>
