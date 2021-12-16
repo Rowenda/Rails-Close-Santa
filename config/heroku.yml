@@ -1,0 +1,6 @@
+setup:
+  config:
+    cloudinary:
+      cloud name: dn5lpurr4
+      Api Key: "353324538374178"
+      Api secret: "FaN4FmgSexFKJVwKIaQyU2mgjhY"
