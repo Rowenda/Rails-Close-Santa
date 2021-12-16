@@ -8,17 +8,18 @@
 <%# if the current user is the user who created the offer linked to the reservation %>
 <% if @reservation.offer.user.id == current_user.id %>
   <% if @reservation.status == "pending" %>
-    <%= link_to "accept", reservation_accept_status_path(@reservation) %>
-    <%= console %>
-    <%= button_to "reject", { :action => "destroy", :id => @reservation.id },
-          :confirm => "Are you sure?", :method => :delete %>
+    <%= link_to "Accept", reservation_accept_status_path(@reservation) %>
+    <%= link_to "Reject",
+            @reservation,
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
 
 <%# if the current user is the user who created the reservation %>
 <% if @reservation.user.id == current_user.id %>
   <% if @reservation.status == "pending" %>
- <%= link_to "Delete reservation",
+ <%= link_to "Cancel",
             @reservation,
             method: :delete,
             data: { confirm: "Are you sure?" } %>
