@@ -9,19 +9,25 @@
 <% if @reservation.offer.user.id == current_user.id %>
   <% if @reservation.status == "pending" %>
     <%= link_to "Accept", reservation_accept_status_path(@reservation) %>
-    <%= link_to "Reject",
-            @reservation,
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+    <%= link_to "Reject", reservation_reject_status_path(@reservation) %>
   <% end %>
 <% end %>reservation_start
 
 <%# if the current user is the user who created the reservation %>
 <% if @reservation.user.id == current_user.id %>
   <% if @reservation.status == "pending" %>
- <%= link_to "Cancel",
-            @reservation,
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+    <%= link_to "Cancel",
+        @reservation,
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+  <% if @reservation.status == "rejected" %>
+    <%= link_to "Delete",
+        @reservation,
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
+
+<%= link_to 'Back to my dashboard', dashboard_offers_path %>
