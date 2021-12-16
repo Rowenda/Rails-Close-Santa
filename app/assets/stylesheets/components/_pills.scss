@@ -17,6 +17,12 @@
 
 }
 
+.pill-color-white {
+  @extend .pill-color;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .pill-color:hover {
     transition: 1s ease;
     box-shadow: 0 0 5rem rgba(100, 255, 180, 0.8);
