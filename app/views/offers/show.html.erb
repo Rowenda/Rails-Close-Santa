@@ -25,9 +25,18 @@
 <div class="show-picture-content" style="  background-image:url('https://source.unsplash.com/collection/8981385/200x500');">
 <%= link_to "😒 Go Back", offers_path, :class => "bouton-black" %>
 <%# pour que le createur de l'offre ne puisse pas la reserver %>
-<% unless @offer.user_id == current_user %>
+<% unless @offer.user_id == current_user.id %>
 <%= link_to '❤️ Reserve !', new_offer_reservation_path(@offer), class: "bouton-green" %>
 <% end %>
+
+
+<% if @offer.user == current_user %>
+<%= button_to "Delete offer",
+            @offer,
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<% end %>
+
 </div><%# end of picture%>
 
 </div><%# end of content%>

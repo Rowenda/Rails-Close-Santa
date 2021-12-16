@@ -4,7 +4,12 @@ class OffersController < ApplicationController
   end
 
   def new
+    # si pas connecter redirect sign in pour ne pas pouvoir cree offre
+    if user_signed_in?
     @offer = Offer.new
+    else
+      redirect_to user_session_path
+    end
   end
 
   def create
@@ -28,9 +33,12 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
+    puts 'success destroy -_-'
     @offer.destroy
-    redirect_to dasboard_offers_path
+    redirect_to dashboard_offers_path
   end
+
+  private
 
   def offer_params
     params.require(:offer).permit(:title, :availability, :location, :price_per_hour, :offer_description,
