@@ -1,0 +1,61 @@
+.flexcenter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.dashboard-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width:70vw;
+  background-color: white;
+  color: rgb(76, 76, 76);
+  text-align: center;
+  border-radius: 1rem;
+  font-family: "poppins";
+  font-size: 1.5rem;
+  font-weight: normal;
+  box-shadow: $bshadow;
+  margin-bottom: 4rem;
+}
+
+.user-offers-card{
+  width:70vw;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+
+.image-left-content{
+  border-radius: 1rem 0 0 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.user-offers-card-right-content{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem;
+}
+
+.user-offers-card-right-content{
+  h2, p{
+  font-family: "poppins";
+  }
+  p{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin-bottom: 0;
+  }
+}
