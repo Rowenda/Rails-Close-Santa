@@ -9,9 +9,14 @@
 <%# ajout du si connecter button log_out sinon sign_up %>
 <%# penser a faire button sign_in a la place de sign_up et dans la vu du sign in un boutton sign_up %>
        <% unless user_signed_in? %>
-        <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm">
+       <%= link_to user_session_path do %>
+       <h2 class="pill pill-color">log in 🎄</h2>
+
+        <%# <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm"> %>
        <%= link_to new_user_registration_path do %>
        <h2 class="pill pill-color">inscription 🎄</h2>
+       <% end %>
+    </div>
        <% end %>
     </div>
 
@@ -20,6 +25,14 @@
         <input type="text" placeholder="🔍 Search.." class="pill search" id="hide-sm">
        <%= link_to destroy_user_session_path, :method => :delete do %>
        <h2 class="pill pill-color">log_out 🎄</h2>
+
+              <%= link_to dashboard_offers_path do %>
+       <h2 class="pill pill-color"> <%= current_user.firstname %> 🎄</h2>
        <% end %>
+
+
+       <% end %>
+
+
     </div>
     <% end %>

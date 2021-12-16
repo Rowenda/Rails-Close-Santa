@@ -31,7 +31,7 @@
 
 
 <% if @offer.user == current_user %>
-<%= button_to "Delete offer",
+<%= link_to "Delete offer",
             @offer,
             method: :delete,
             data: { confirm: "Are you sure?" } %>
