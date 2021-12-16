@@ -1,15 +1,11 @@
 class OffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @offers = Offer.all
   end
 
   def new
-    # si pas connecter redirect sign in pour ne pas pouvoir cree offre
-    if user_signed_in?
     @offer = Offer.new
-    else
-      redirect_to user_session_path
-    end
   end
 
   def create
