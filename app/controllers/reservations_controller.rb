@@ -37,6 +37,13 @@ class ReservationsController < ApplicationController
     redirect_to dashboard_offers_path, notice: "reservation accepted"
   end
 
+  def reject_status
+    @reservation = Reservation.find(params[:reservation_id])
+    @reservation.status = "rejected"
+    @reservation.save!
+    redirect_to dashboard_offers_path, notice: "reservation rejected"
+  end
+
   private
 
   def reservation_params

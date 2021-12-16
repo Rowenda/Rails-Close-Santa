@@ -20,10 +20,7 @@
               <p>Status: <%= reservation.status %></p>
                 <% if reservation.status == "pending" %>
                   <%= link_to "Accept", reservation_accept_status_path(reservation) %>
-                  <%= link_to "Reject",
-                      reservation,
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
+                  <%= link_to "Reject", reservation_reject_status_path(reservation) %>
                 <% end %>
             <% end %>
           <% end %>
@@ -40,6 +37,18 @@
         <p><%= reservation.start_time %></p>
         <p><%= reservation.end_time %></p>
         <p>Status: <%= reservation.status %></p>
+        <% if reservation.status == "pending" %>
+          <%= link_to "Cancel",
+              reservation,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        <% end %>
+        <% if reservation.status == "rejected" %>
+          <%= link_to "Delete",
+              reservation,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        <% end %>
       </div>
     <% end %>
   </div>
