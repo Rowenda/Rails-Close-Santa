@@ -116,20 +116,20 @@ offers8.save!
 # Reservation
 
 
-reservation1 = Reservation.new(event_adress: "27 avenue Thiers, Nice", status: "pending", start_time:
-                              Time.new(2021, 12, 23, 8, 24, 45), end_time: Time.new(2021, 12, 23, 10, 24, 45))
+reservation1 = Reservation.new(event_adress: "27 avenue Thiers, Nice", status: "pending", reservation_start:
+                              Time.new(2021, 12, 23, 8, 24, 45), reservation_end: Time.new(2021, 12, 23, 10, 24, 45))
 reservation1.user = lennon
 reservation1.offer = offers1
 reservation1.save!
 
-reservation2 = Reservation.new(event_adress: "30 Rue Henri Paschke, Cannes", status: "pending", start_time:
-  Time.new(2021, 12, 25, 9, 30), end_time: Time.new(2021, 12, 25, 10, 30))
+reservation2 = Reservation.new(event_adress: "30 Rue Henri Paschke, Cannes", status: "pending", reservation_start:
+  Time.new(2021, 12, 25, 9, 30), reservation_end: Time.new(2021, 12, 25, 10, 30))
 reservation2.user = mathilda
 reservation2.offer = offers3
 reservation2.save!
 
-reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", status: "pending", start_time:
-  Time.new(2021, 12, 18, 22, 30), end_time: Time.new(2021, 12, 19, 4))
+reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", status: "pending", reservation_start:
+  Time.new(2021, 12, 18, 22, 30), reservation_end: Time.new(2021, 12, 19, 4))
 reservation2.user = mathilda
 reservation2.offer = offers7
 reservation2.save!

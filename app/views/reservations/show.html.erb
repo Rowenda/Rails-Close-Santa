@@ -1,8 +1,8 @@
 <h1>reservation show</h1>
 
 <p><%= @reservation.event_adress %></p>
-<p><%= @reservation.start_time %></p>
-<p><%= @reservation.end_time %></p>
+<p><%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_start.strftime("at %I:%M %p") %></p>
+<p><%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_end.strftime("at %I:%M %p") %></p>
 <p><%= @reservation.status %></p>
 
 <%# if the current user is the user who created the offer linked to the reservation %>
@@ -13,7 +13,7 @@
     <%= button_to "reject", { :action => "destroy", :id => @reservation.id },
           :confirm => "Are you sure?", :method => :delete %>
   <% end %>
-<% end %>
+<% end %>reservation_start
 
 <%# if the current user is the user who created the reservation %>
 <% if @reservation.user.id == current_user.id %>

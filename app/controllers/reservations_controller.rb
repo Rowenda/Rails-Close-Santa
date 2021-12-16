@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @offer = Offer.find(@reservation.offer_id)
   end
 
   def destroy
@@ -40,7 +41,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:event_adress, :start_time, :end_time)
+    params.require(:reservation).permit(:event_adress, :reservation_start, :reservation_end)
   end
+
 end
-console
