@@ -3,15 +3,9 @@ class ReservationsController < ApplicationController
   # a faire method private before_action :find_offer, only: [:create]
 
   def new
-
-    # a tester la condition si pas connecter redirect to sign_in
-    if user_signed_in?
     @reservation = Reservation.new
     @user = current_user
     @offer = Offer.find(params[:offer_id])
-    else
-      redirect_to redirect_to user_session_path
-    end
   end
 
   def create
@@ -20,7 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.offer = @offer
     if @reservation.save!
-      redirect_to reservation_path(@reservation), notice: "creation success"
+      redirect_to dashboard_offers_path, notice: "creation success"
     else
       render 'reservations/new'
     end
