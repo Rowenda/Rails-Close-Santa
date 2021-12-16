@@ -1,10 +1,12 @@
 <div class="navbar">
 
 <%# function for display 🎅🏻 or 🧑🏻 %>
+<% if user_signed_in? %>
 <% if current_user.offers.present?%>
 <% is_santa = "🎅🏻" %>
 <% else %>
 <% is_santa = "🧑🏻" %>
+<% end %>
 <% end %>
 
 <%# 🟡 logo ---------------------------- %>
