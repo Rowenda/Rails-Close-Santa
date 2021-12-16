@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.offer = @offer
     if @reservation.save!
-      redirect_to reservation_path(@reservation), notice: "creation success"
+      redirect_to dashboard_offers_path, notice: "creation success"
     else
       render 'reservations/new'
     end
