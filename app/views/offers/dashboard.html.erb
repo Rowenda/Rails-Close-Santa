@@ -52,7 +52,7 @@
                 <div class="if-reserve">
                 <h4> 🧑🏻 <b><%= reservation.user.firstname %> wants a santa</b></h4>
                   <p><b>Adress:</b> <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
-                  <br> <b>Start at:</b> <%= reservation.reservation_start.strftime("at %I:%M %p") %> <br> <b>End:</b><%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
+                  <br> <b>Start at:</b> <%= reservation.reservation_start.strftime(" %I:%M %p") %> <br> <b>End at:</b><%= reservation.reservation_end.strftime(" %I:%M %p") %></p>
 
                     <%# - à ajouter si necessaire
                   <p>Status: <%= reservation.status %></p>
@@ -66,6 +66,9 @@
 
                     <% if reservation.status == "accepted" %>
                     <a class="bouton-white" href="mailto:<%=reservation.user.email%>"> contact <%= reservation.user.firstname%> </a>
+                    <% end %>
+                    <% if reservation.status == "rejected" %>
+                      <p> this reservation is <%= reservation.status %> 😭 </p>
                     <% end %>
                 </div>
       <% end %>
@@ -113,7 +116,7 @@
                                                       data: { confirm: "Are you sure?" },class:"bouton-red"%>
                                                 <% end %>
                                                 <% if reservation.status == "rejected" %>
-                                                <p>Santa reject your reservation 😭</p><br>
+                                                <p>Santa rejected your reservation 😭</p><br>
                                                   <%= link_to "Delete",
                                                       reservation,
                                                       method: :delete,
