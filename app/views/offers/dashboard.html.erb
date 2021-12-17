@@ -109,7 +109,7 @@
                                                   <p><b>Address: </b><%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
                                                   <p> <b>The <%= Offer.find(reservation.offer_id).availability %> :</b> from <%= reservation.reservation_start.strftime("%H:%M") %> to <%= reservation.reservation_end.strftime("%H:%M") %></p>
                                                           <% if reservation.status == "pending" %>
-                                                  <p>no santa has not accepted yet 😞</p><br>
+                                                  <p>Your santa has not accepted yet 😞</p><br>
                                                   <%= link_to "Cancel",
                                                       reservation,
                                                       method: :delete,
