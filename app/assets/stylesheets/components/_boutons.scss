@@ -1,7 +1,7 @@
 .bouton-green{
   @extend .bouton;
   background-color: $green;
-  color: white;
+  color: white !important;
 }
 
 .bouton-red{
