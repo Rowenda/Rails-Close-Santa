@@ -7,7 +7,9 @@
 <% end %>
 <% end %>
 
+<div class=top-message-div>
 <h2 id="top-message"><%=is_santa%> <%= current_user.firstname %>'s Offers 🎁<h2>
+</div>
 
 <div class="flexcenter">
 
@@ -22,29 +24,38 @@
               </div>
 
               <div class="user-offers-card-right-content">
-                  <h2><b><%=link_to "#{offer.title}", offer_path(offer) %></b></h2>
+                  <h4><b><%=link_to "#{offer.title}", offer_path(offer) %></b></h4>
 
                   <p> <b>Available:</b> in <%= offer.location %> the <%= offer.availability %><br>
                       <b>Price : </b><%= offer.price_per_hour %>$ </p>
 
 
+                  <div class="if-reserve">
               <% if offer.user.id == current_user.id && offer.reservations.present?%>
                 <% offer.reservations.each do |reservation| %>
-                <br><h4> <b><%= reservation.user.firstname %> has accepted ✅</b></h4>
-                  <p>Adress: <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
-                  <p>Time: <%= reservation.start_time %> <%= reservation.end_time %></p>
+                <h4> <b><%= reservation.user.firstname %> has accepted ✅</b></h4>
+                  <p><b>Adress:</b> <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
+                  <br> <b>Start at:</b> <%= reservation.start_time %> <br> <b>End:</b> <%= reservation.end_time %></p>
+
+                    <%# - à ajouter si necessaire
                   <p>Status: <%= reservation.status %></p>
                     <% if reservation.status == "pending" %>
-                      <%= link_to "accept", reservation_accept_status_path(reservation) %>
+
+                      <div id="button-dashboard-div">
+                      <%= link_to "accept", reservation_accept_status_path(reservation), class:"bouton-white"  %>
                       <%= link_to "reject",
                           reservation,
                           method: :delete,
-                          data: { confirm: "Are you sure?" } %>
+                          data: { confirm: "Are you sure?" }, class:"bouton-red"%>
+                      </div>
+                    <% end %>
+                    <% if reservation.status == "accepted" %>
+                    <a class="bouton-white" href="mailto:<%=reservation.user.email%>"> contact <%= reservation.user.firstname%> </a>
+
                     <% end %>
                 <% end %>
+                </div>
               <% end %>
-
-
           </div>
 
 
