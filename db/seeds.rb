@@ -10,12 +10,16 @@ require 'date'
 require 'open-uri'
 
 # cleaning the database
+puts "-----cleaning reservation db-----"
 Reservation.destroy_all
+puts "-----cleaning offer db-----"
 Offer.destroy_all
+puts "-----cleaning user db-----"
 User.destroy_all
 
 # Users
 
+puts "-----user creation-----"
 johndoe = User.create!(firstname: "John", lastname: "Doe", email: "johndoe@yahoo.fr", password: "123456")
 paulmaccartney = User.create!(firstname: "Paul", lastname: "MacCartney", email: "paulmaccartney@lycos.org",
                               password: "123456")
@@ -24,7 +28,11 @@ mathilda = User.create!(firstname: "Mathilda", lastname: "Sorich", email: "mathi
 romeo = User.create!(firstname: "Romeo", lastname: "Montaigu", email: "romeromontacru@hotmail.fr", password: "123456")
 santa = User.create!(firstname: "Santa", lastname: "Clause", email: "santaclause@google.lap", password: "123456")
 
+puts "-----user created-----"
+
 # Offers
+
+puts "-----offer creation-----"
 
 file = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639578231/development/nmxcoqy7rp1v84whnviabbivzf5n.jpg')
 offers1 = Offer.new(location: "Nice", availability: Date.new(2021, 12, 24), price_per_hour: 80,
@@ -113,8 +121,11 @@ offers8.user = santa
 offers8.photo.attach(io: file, filename: 'romeopic', content_type: 'image/jpg')
 offers8.save!
 
+puts "-----offer created-----"
+
 # Reservation
 
+puts "-----reservation creation-----"
 
 reservation1 = Reservation.new(event_adress: "27 avenue Thiers, Nice", status: "pending", reservation_start:
                               Time.new(2021, 12, 23, 8, 24, 45), reservation_end: Time.new(2021, 12, 23, 10, 24, 45))
@@ -133,3 +144,5 @@ reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", stat
 reservation2.user = mathilda
 reservation2.offer = offers7
 reservation2.save!
+
+puts "-----reservation created-----"
