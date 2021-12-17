@@ -35,7 +35,7 @@
                   <%=link_to "#{offer.title}", offer_path(offer) %></h4> <hr>
 
                   <p> <b>Available:</b> in <%= offer.location %> the <%= offer.availability %></p>
-                      <p><b>Price : <%= offer.price_per_hour %> $ </b>
+                      <p><b>Price : <%= offer.price_per_hour %> € </b>
                       <% unless offer.reservations.present? %>
                          - no reservation yet 😢 </p>
                         <%else%>
