@@ -141,8 +141,8 @@ reservation2.offer = offers3
 reservation2.save!
 
 reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", status: "pending", reservation_start:
-  Time.new(2021, 12, 18, 22, 30), reservation_end: Time.new(2021, 12, 19, 4))
-reservation2.user = lennon
+  Time.new(2021, 12, 22, 22, 30), reservation_end: Time.new(2021, 12, 22, 23, 45))
+reservation2.user = mathilda
 reservation2.offer = offers7
 reservation2.save!
 
