@@ -12,18 +12,15 @@
           <%= offer.location %>
           <%= offer.price_per_hour %>
           <%= offer.availability %>
-          <% if offer.user.id == current_user.id %>
+          <% if offer.user.id == current_user.id && offer.reservations.present?%>
             <p>My offer's reservations</p>
             <% offer.reservations.each do |reservation| %>
               <p>Adress: <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
-              <p>Time: <%= reservation.start_time %> <%= reservation.end_time %></p>
+              <p>Time: <p><%= offer.availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %> <%= offer.availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
               <p>Status: <%= reservation.status %></p>
                 <% if reservation.status == "pending" %>
-                  <%= link_to "accept", reservation_accept_status_path(reservation) %>
-                  <%= link_to "reject",
-                      reservation,
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
+                  <%= link_to "Accept", reservation_accept_status_path(reservation) %>
+                  <%= link_to "Reject", reservation_reject_status_path(reservation) %>
                 <% end %>
             <% end %>
           <% end %>
@@ -32,14 +29,26 @@
     <% end %>
   </div>
   <%# test %>
-  <h2>MY RESERVATION</h2>
+  <h2>MY RESERVATIONS</h2>
   <div class='offer-dashboard'>
     <% @reservations.each do |reservation| %>
       <div class='reservation-link'>
         <p>Address: <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
-        <p><%= reservation.start_time %></p>
-        <p><%= reservation.end_time %></p>
+        <p> <%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %></p>
+        <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
         <p>Status: <%= reservation.status %></p>
+        <% if reservation.status == "pending" %>
+          <%= link_to "Cancel",
+              reservation,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        <% end %>
+        <% if reservation.status == "rejected" %>
+          <%= link_to "Delete",
+              reservation,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        <% end %>
       </div>
     <% end %>
   </div>

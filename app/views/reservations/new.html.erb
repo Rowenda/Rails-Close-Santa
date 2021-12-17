@@ -5,12 +5,13 @@
 <div class="d-flex justify-content-center">
 <div class="fcontent">
     <%= f.input :event_adress %>
-    <%= f.input :start_time, as: :time, html5: true %>
-    <%= f.input :end_time, as: :time, html5: true %>
+    <%= f.input :reservation_start, as: :time, html5: true %>
+    <%= f.input :reservation_end, as: :time, html5: true %>
     <div class="d-flex justify-content-center">
     <%= link_to 'back to offer', offer_path(@offer), :id => "black-btn-form"%>
     <%= f.submit "reserve", :id => "green-btn-form" %>
   </div>
+
 <% end %>
 </div>
 </div>
