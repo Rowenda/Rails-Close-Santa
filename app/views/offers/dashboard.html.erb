@@ -56,16 +56,14 @@
 
                     <%# - à ajouter si necessaire
                   <p>Status: <%= reservation.status %></p>
-                                <% if reservation.status == "pending" %>
+                    <% if reservation.status == "pending" %>
 
-                                        <div id="button-dashboard-div">
-                                        <%= link_to "accept", reservation_accept_status_path(reservation), class:"bouton-white"  %>
-                                        <%= link_to "reject",
-                                            reservation,
-                                            method: :delete,
-                                            data: { confirm: "Are you sure?" }, class:"bouton-red"%>
-                                        </div>
-                                <% end %>
+                      <div id="button-dashboard-div">
+                      <%= link_to "accept", reservation_accept_status_path(reservation), class:"bouton-white"  %>
+                      <%= link_to "Reject", reservation_reject_status_path(reservation) %>
+                      </div>
+                    <% end %>
+
                     <% if reservation.status == "accepted" %>
                     <a class="bouton-white" href="mailto:<%=reservation.user.email%>"> contact <%= reservation.user.firstname%> </a>
                     <% end %>

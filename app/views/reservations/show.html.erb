@@ -1,33 +1,42 @@
-<h1>reservation show</h1>
+<div class="container">
+  <div class="show-description-content text-center">
+    <div class="text-center">
+      <h3>Reservation at <%= @reservation.event_adress %></h3>
+      <br/>
+      <p>Starting at: <%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_start.strftime("at %I:%M %p") %></p>
+      <p>Ending at: <%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_end.strftime("at %I:%M %p") %></p>
+      <p>Status: <%= @reservation.status %></p>
+    </div>
 
-<p><%= @reservation.event_adress %></p>
-<p><%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_start.strftime("at %I:%M %p") %></p>
-<p><%= @offer.availability.to_time.strftime('%e %B %Y') %> <%= @reservation.reservation_end.strftime("at %I:%M %p") %></p>
-<p><%= @reservation.status %></p>
+    <%# if the current user is the user who created the reservation %>
+    <% if @reservation.user.id == current_user.id %>
+      <div class="d-inline-flex bouton-group">
+      <% if @reservation.status == "pending" %>
+        <%= link_to "Cancel",
+            @reservation,
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "bouton-black"%>
+      <% end %>
+      <% if @reservation.status == "rejected" %>
+        <%= link_to "Delete",
+            @reservation,
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "bouton-black"%> %>
+      <% end %>
+      </div>
+    <% end %>
 
-<%# if the current user is the user who created the offer linked to the reservation %>
-<% if @reservation.offer.user.id == current_user.id %>
-  <% if @reservation.status == "pending" %>
-    <%= link_to "Accept", reservation_accept_status_path(@reservation) %>
-    <%= link_to "Reject", reservation_reject_status_path(@reservation) %>
-  <% end %>
-<% end %>
-
-<%# if the current user is the user who created the reservation %>
-<% if @reservation.user.id == current_user.id %>
-  <% if @reservation.status == "pending" %>
-    <%= link_to "Cancel",
-        @reservation,
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-  <% end %>
-
-  <% if @reservation.status == "rejected" %>
-    <%= link_to "Delete",
-        @reservation,
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-  <% end %>
-<% end %>
-
-<%= link_to 'Back to my dashboard', dashboard_offers_path %>
+    <%# if the current user is the user who created the offer linked to the reservation %>
+    <% if @reservation.offer.user.id == current_user.id %>
+      <% if @reservation.status == "pending" %>
+        <div class="d-inline-flex bouton-group">
+          <%= link_to "Accept", reservation_accept_status_path(@reservation), class: "bouton-green" %>
+          <%= link_to "Reject", reservation_reject_status_path(@reservation), class: "bouton-red" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to 'Back to my dashboard', dashboard_offers_path, class: "bouton-white" %>
+</div>
