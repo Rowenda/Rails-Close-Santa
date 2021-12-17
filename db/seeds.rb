@@ -28,6 +28,7 @@ mathilda = User.create!(firstname: "Mathilda", lastname: "Sorich", email: "mathi
 romeo = User.create!(firstname: "Romeo", lastname: "Montaigu", email: "romeromontacru@hotmail.fr", password: "123456")
 santa = User.create!(firstname: "Santa", lastname: "Clause", email: "santaclause@google.lap", password: "123456")
 
+
 puts "-----user created-----"
 
 # Offers
@@ -135,13 +136,13 @@ reservation1.save!
 
 reservation2 = Reservation.new(event_adress: "30 Rue Henri Paschke, Cannes", status: "pending", reservation_start:
   Time.new(2021, 12, 25, 9, 30), reservation_end: Time.new(2021, 12, 25, 10, 30))
-reservation2.user = mathilda
+reservation2.user = lennon
 reservation2.offer = offers3
 reservation2.save!
 
 reservation2 = Reservation.new(event_adress: "12 Rue de la liberté, Nice", status: "pending", reservation_start:
   Time.new(2021, 12, 18, 22, 30), reservation_end: Time.new(2021, 12, 19, 4))
-reservation2.user = mathilda
+reservation2.user = lennon
 reservation2.offer = offers7
 reservation2.save!
 
