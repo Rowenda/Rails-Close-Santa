@@ -41,7 +41,7 @@
 <% end %>
 
 
-  <div class="show-picture-content" style="  background-image:url('https://source.unsplash.com/collection/8981385/200x500');">
+  <div class="show-picture-content" style="background-image: url(<%= cl_image_path @offer.photo.key, height: 500, width: 200%>);">
   <%= link_to "😒 Go Back", offers_path, :class => "bouton-black" %>
   <%# pour que le createur de l'offre ne puisse pas la reserver %>
   <% unless @offer.user_id == current_user.id %>
