@@ -35,7 +35,7 @@
                 <% offer.reservations.each do |reservation| %>
                 <h4> <b><%= reservation.user.firstname %> has accepted ✅</b></h4>
                   <p><b>Adress:</b> <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
-                  <br> <b>Start at:</b> <%= reservation.start_time %> <br> <b>End:</b> <%= reservation.end_time %></p>
+                  <br> <b>Start at:</b> <%= reservation.reservation_start.strftime("at %I:%M %p") %> <br> <b>End:</b><%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
 
                     <%# - à ajouter si necessaire
                   <p>Status: <%= reservation.status %></p>
