@@ -1,43 +1,83 @@
-<%# ajout de style par virgile, suprimer le style dans le html pour jeudi %>
+<%# function for display 🎅🏻 or 🧑🏻 %>
+<% if user_signed_in? %>
+<% if current_user.offers.present?%>
+<% is_santa = "🎅🏻" %>
+<% else %>
+<% is_santa = "🧑🏻" %>
+<% end %>
+<% end %>
+
+<div class=top-message-div>
+<h2 id="top-message"><%=is_santa%> <%= current_user.firstname %>'s Offers 🎁<h2>
+</div>
+
+<div class="flexcenter">
 
 
-<h1 class='container' style="background-color:white; border-radius:1rem; width:50vw; margin-top:2rem">dashboard</h1>
+    <div>
 
-<div class='container' style="background-color:white; border-radius:1rem; width:50vw; padding:2rem 0;">
-  <h2>MY OFFERS</h2>
-  <div>
-    <% @offers.each do |offer| %>
-      <div class='offer-link'>
-        <p> offer : <%=link_to "#{offer.title}", offer_path(offer) %>
-          <%= offer.location %>
-          <%= offer.price_per_hour %>
-          <%= offer.availability %>
-          <% if offer.user.id == current_user.id && offer.reservations.present?%>
-            <p>My offer's reservations</p>
-            <% offer.reservations.each do |reservation| %>
-              <p>Adress: <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
-              <p>Time: <p><%= offer.availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %> <%= offer.availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
-              <p>Status: <%= reservation.status %></p>
-                <% if reservation.status == "pending" %>
-                  <%= link_to "Accept", reservation_accept_status_path(reservation) %>
-                  <%= link_to "Reject", reservation_reject_status_path(reservation) %>
+      <% @offers.each do |offer| %>
+
+
+          <div class="user-offers-card">
+              <div style="background-image: url(<%= cl_image_path offer.photo.key, height: 250, width: 500, crop: :fill %>);" class="image-left-content" >
+              </div>
+
+              <div class="user-offers-card-right-content">
+                  <h4><b><%=link_to "#{offer.title}", offer_path(offer) %></b></h4>
+
+                  <p> <b>Available:</b> in <%= offer.location %> the <%= offer.availability %><br>
+                      <b>Price : </b><%= offer.price_per_hour %>$ </p>
+
+
+                  <div class="if-reserve">
+              <% if offer.user.id == current_user.id && offer.reservations.present?%>
+                <% offer.reservations.each do |reservation| %>
+                <h4> <b><%= reservation.user.firstname %> has accepted ✅</b></h4>
+                  <p><b>Adress:</b> <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
+                  <br> <b>Start at:</b> <%= reservation.start_time %> <br> <b>End:</b> <%= reservation.end_time %></p>
+
+                    <%# - à ajouter si necessaire
+                  <p>Status: <%= reservation.status %></p>
+                    <% if reservation.status == "pending" %>
+
+                      <div id="button-dashboard-div">
+                      <%= link_to "accept", reservation_accept_status_path(reservation), class:"bouton-white"  %>
+                      <%= link_to "reject",
+                          reservation,
+                          method: :delete,
+                          data: { confirm: "Are you sure?" }, class:"bouton-red"%>
+                      </div>
+                    <% end %>
+                    <% if reservation.status == "accepted" %>
+                    <a class="bouton-white" href="mailto:<%=reservation.user.email%>"> contact <%= reservation.user.firstname%> </a>
+
+                    <% end %>
                 <% end %>
-            <% end %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
-  </div>
-  <%# test %>
-  <h2>MY RESERVATIONS</h2>
-  <div class='offer-dashboard'>
-    <% @reservations.each do |reservation| %>
-      <div class='reservation-link'>
-        <p>Address: <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
-        <p> <%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %></p>
-        <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
-        <p>Status: <%= reservation.status %></p>
-        <% if reservation.status == "pending" %>
+                </div>
+              <% end %>
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+      <% end %>
+    </div>
+    <%# test %>
+    <h2>MY RESERVATION</h2>
+    <div class='offer-dashboard'>
+      <% @reservations.each do |reservation| %>
+        <div class='reservation-link'>
+          <p>Address: <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
+          <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %></p>
+          <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
+          <p>Status: <%= reservation.status %></p>
+                  <% if reservation.status == "pending" %>
           <%= link_to "Cancel",
               reservation,
               method: :delete,
@@ -49,9 +89,10 @@
               method: :delete,
               data: { confirm: "Are you sure?" } %>
         <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "Back to offers", offers_path %>
+    <%= link_to "Create an offer", new_offer_path %>
   </div>
-  <%= link_to "Back to offers", offers_path %>
-  <%= link_to "Create an offer", new_offer_path %>
 </div>
