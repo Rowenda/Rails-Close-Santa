@@ -22,12 +22,13 @@
   margin-bottom: 4rem;
 }
 
-.user-offers-card{
+.offers-card{
   width:70vw;
   display: grid;
   grid-template-columns: 2fr 4fr;
   border-radius: 1rem;
   margin-bottom: 3rem;
+  background-color: white;
 }
 
 
@@ -39,7 +40,6 @@
 }
 
 .user-offers-card-right-content{
-  background-color: blanchedalmond;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,13 +48,21 @@
 }
 
 .user-offers-card-right-content{
-  p, h4{
+  p, h4, h2, h3{
   font-family: "poppins";
+  text-align: center;
   }
   p{
     font-size: 1.2rem;
     line-height: 2rem;
     margin-bottom: 0;
+  }
+  hr{
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  width: 15vw ;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
   }
 }
 
@@ -71,4 +79,17 @@
   background-color: $green;
   width: 100%;
   border-radius: 0 0 1rem 0;
+  padding: 2rem 0 1rem 0;
+}
+
+.offer-description{
+  color: rgba(0, 0, 0, 0.776);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  border-radius: 0 1rem 1rem 0;
+  padding: 2rem 0 2rem 0;
 }

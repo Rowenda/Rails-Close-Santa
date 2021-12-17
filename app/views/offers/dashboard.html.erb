@@ -8,32 +8,49 @@
 <% end %>
 
 <div class=top-message-div>
-<h2 id="top-message"><%=is_santa%> <%= current_user.firstname %>'s Offers 🎁<h2>
+<h2 id="top-message"><%=is_santa%> <%= current_user.firstname %>'s Dashboard 🎁<h2>
+<div class="bouton-index">
+<%= link_to "Back to offers", offers_path, class:"pill m-2" %>
+<%= link_to "Create an offer", new_offer_path, class:"pill pill-color m-2" %>
 </div>
+</div>
+
 
 <div class="flexcenter">
 
 
-    <div>
+
 
       <% @offers.each do |offer| %>
 
 
-          <div class="user-offers-card">
+         <div class="offers-card">
               <div style="background-image: url(<%= cl_image_path offer.photo.key, height: 250, width: 500, crop: :fill %>);" class="image-left-content" >
               </div>
 
               <div class="user-offers-card-right-content">
-                  <h4><b><%=link_to "#{offer.title}", offer_path(offer) %></b></h4>
 
-                  <p> <b>Available:</b> in <%= offer.location %> the <%= offer.availability %><br>
-                      <b>Price : </b><%= offer.price_per_hour %>$ </p>
+                <div class="offer-description">
+                  <h4><b>My offer 🎅🏻</b><br>
+                  <%=link_to "#{offer.title}", offer_path(offer) %></h4> <hr>
+
+                  <p> <b>Available:</b> in <%= offer.location %> the <%= offer.availability %></p>
+                      <p><b>Price : <%= offer.price_per_hour %> $ </b>
+                      <% unless offer.reservations.present? %>
+                         - no reservation yet 😢 </p>
+                        <%else%>
+                        - Someone is intereted 😎 </p>
+                      <% end %>
 
 
-                  <div class="if-reserve">
+                      </p>
+
+                </div>
+
               <% if offer.user.id == current_user.id && offer.reservations.present?%>
                 <% offer.reservations.each do |reservation| %>
-                <h4> <b><%= reservation.user.firstname %> has accepted ✅</b></h4>
+                <div class="if-reserve">
+                <h4> 🧑🏻 <b><%= reservation.user.firstname %> wants a santa</b></h4>
                   <p><b>Adress:</b> <%= link_to "#{reservation.event_adress}", reservation_path(reservation)  %>
                   <br> <b>Start at:</b> <%= reservation.reservation_start.strftime("at %I:%M %p") %> <br> <b>End:</b><%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
 
@@ -46,50 +63,72 @@
                       <%= link_to "Reject", reservation_reject_status_path(reservation) %>
                       </div>
                     <% end %>
+
                     <% if reservation.status == "accepted" %>
                     <a class="bouton-white" href="mailto:<%=reservation.user.email%>"> contact <%= reservation.user.firstname%> </a>
-
                     <% end %>
-                <% end %>
                 </div>
-              <% end %>
-          </div>
-
-
-
-
-
-
-
-
-        </div>
       <% end %>
+
+
+
+
+
+
+
+
+      <% end %>
+        </div>
     </div>
-    <%# test %>
-    <h2>MY RESERVATION</h2>
+      <% end %>
+
+
+
+
+
     <div class='offer-dashboard'>
+
+
+
       <% @reservations.each do |reservation| %>
-        <div class='reservation-link'>
-          <p>Address: <%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
-          <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_start.strftime("at %I:%M %p") %></p>
-          <p><%= Offer.find(reservation.offer_id).availability.to_time.strftime('%e %B %Y') %> <%= reservation.reservation_end.strftime("at %I:%M %p") %></p>
-          <p>Status: <%= reservation.status %></p>
-                  <% if reservation.status == "pending" %>
-          <%= link_to "Cancel",
-              reservation,
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-        <% end %>
-        <% if reservation.status == "rejected" %>
-          <%= link_to "Delete",
-              reservation,
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-        <% end %>
+        <div class="offers-card">
+
+                    <div style="background-image: url(<%= cl_image_path reservation.offer.photo.key, height: 250, width: 500, crop: :fill %>);" class="image-left-content" >
+                    </div>
+
+                    <div class="user-offers-card-right-content">
+
+
+                            <div class="offer-description">
+                                                  <h4><b>My reservation 🧑🏻</b><br>
+                                                  <%=link_to "#{reservation.offer.title}", reservation_path(reservation) %></h4><hr>
+
+                                                  <p><b>Address: </b><%=link_to "#{reservation.event_adress}", reservation_path(reservation) %></p>
+                                                  <p> <b>The <%= Offer.find(reservation.offer_id).availability %> :</b> from <%= reservation.reservation_start.strftime("%H:%M") %> to <%= reservation.reservation_end.strftime("%H:%M") %></p>
+                                                          <% if reservation.status == "pending" %>
+                                                  <p>no santa has not accepted yet 😞</p><br>
+                                                  <%= link_to "Cancel",
+                                                      reservation,
+                                                      method: :delete,
+                                                      data: { confirm: "Are you sure?" },class:"bouton-red"%>
+                                                <% end %>
+                                                <% if reservation.status == "rejected" %>
+                                                <p>Santa reject your reservation 😭</p><br>
+                                                  <%= link_to "Delete",
+                                                      reservation,
+                                                      method: :delete,
+                                                      data: { confirm: "Are you sure?" },class:"bouton-red"%>
+
+                                          <% end %>
+                                                <% if reservation.status == "accepted" %>
+                                                <p>Santa accept your reservation 🥳</p><br>
+                                                <a class="bouton-green" href="mailto:<%=reservation.offer.user.email%>"> Contact <%=reservation.offer.user.firstname%> </a>
+
+                                          <% end %>
+                            </div>
+                     </div>
         </div>
-      <% end %>
+                                        <% end %>
     </div>
-    <%= link_to "Back to offers", offers_path %>
-    <%= link_to "Create an offer", new_offer_path %>
-  </div>
+</div>
 </div>

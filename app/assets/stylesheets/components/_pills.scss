@@ -8,6 +8,15 @@
     white-space: nowrap;
 }
 
+.pill-message {
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.087);
+    border-radius: 5rem;
+    white-space: nowrap;
+}
+
 .pill-color {
     background-color: $green;
     box-shadow: 0 0 2rem rgba(130, 255, 190, 0.180);
