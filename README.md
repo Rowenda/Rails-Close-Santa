@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+projet a 4 réaliser de A a Z en 5 jours projet d'école le Wagon Nice
+Sur le modèle de la marketplace Rbnb loué son père noel 
