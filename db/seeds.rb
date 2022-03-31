@@ -43,7 +43,7 @@ offers1 = Offer.new(location: "Nice", availability: Date.new(2021, 12, 24), pric
                     santa_description: "natural belly, beautifull beard, quality costume and I come with
                     my own reindeer ")
 offers1.user = johndoe
-offers1.photo.attach(io: image1, filename: 'johndoepic', content_type: 'image/jpg')
+offers1.photo.attach(io: image1, filename: 'johndoepic', content_type: 'image/png')
 offers1.save!
 
 image2 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639751069/development/santa2_tgitli.jpg')
@@ -54,7 +54,7 @@ offers2 = Offer.new(location: "Cannes", availability: Date.new(2021, 12, 20), pr
                     santa_description: "gratuated from santa school, natural beard, 6 year of experience and a guarantee
                     for your enjoyement, just choose the good santa. ")
 offers2.user = paulmaccartney
-offers2.photo.attach(io: image2, filename: 'paulpic', content_type: 'image/jpg')
+offers2.photo.attach(io: image2, filename: 'paulpic', content_type: 'image/png')
 offers2.save!
 
 image3 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639580337/development/paul_cyeqep.jpg')
@@ -65,7 +65,7 @@ offers3 = Offer.new(location: "Cannes", availability: Date.new(2021, 12, 25), pr
                     santa_description: "gratuated from santa school, natural beard, 6 year of experience and a guarantee
                     for your enjoyement, just choose the good santa. ")
 offers3.user = paulmaccartney
-offers3.photo.attach(io: image3, filename: 'paulpic', content_type: 'image/jpg')
+offers3.photo.attach(io: image3, filename: 'paulpic', content_type: 'image/png')
 offers3.save!
 
 image4 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639580336/development/romeo_f6n1wk.jpg')
@@ -76,7 +76,7 @@ offers4 = Offer.new(location: "Marseille", availability: Date.new(2021, 12, 16),
                     santa_description: "Santa of Massilia, the must of the cannebiere, I can bring the magic in your
                     christmas time.")
 offers4.user = lennon
-offers4.photo.attach(io: image4, filename: 'lennonpic', content_type: 'image/jpg')
+offers4.photo.attach(io: image4, filename: 'lennonpic', content_type: 'image/png')
 offers4.save!
 
 
@@ -88,7 +88,7 @@ offers5 = Offer.new(location: "Marseille", availability: Date.new(2021, 12, 23),
                     santa_description: "Santa of Massilia, the must of the cannebiere, I can bring the magic in your
                     christmas time.")
 offers5.user = lennon
-offers5.photo.attach(io: image5, filename: 'lennonpic', content_type: 'image/jpg')
+offers5.photo.attach(io: image5, filename: 'lennonpic', content_type: 'image/png')
 offers5.save!
 
 image6 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639750905/development/santa-in-a-hot-tub-2_nreyxt.jpg')
@@ -100,7 +100,7 @@ offers6 = Offer.new(location: "Marseille", availability: Date.new(2021, 12, 31),
                     santa_description: "30 years fo experience, gratuated of the Santa school, professionnal,
                     I guarantee you the best prestation.")
 offers6.user = lennon
-offers6.photo.attach(io: image6, filename: 'lennonpic', content_type: 'image/jpg')
+offers6.photo.attach(io: image6, filename: 'lennonpic', content_type: 'image/png')
 offers6.save!
 
 image7 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639750959/development/hot-santa_hyc8by.jpg')
@@ -109,7 +109,7 @@ offers7 = Offer.new(location: "Nice", availability: Date.new(2021, 12, 18), pric
                     title: "Nice Santa",
                     santa_description: "A hot chocolate and a hot santa, the best Christmas combination.")
 offers7.user = romeo
-offers7.photo.attach(io: image7, filename: 'romeopic', content_type: 'image/jpg')
+offers7.photo.attach(io: image7, filename: 'romeopic', content_type: 'image/png')
 offers7.save!
 
 image8 = URI.open('https://res.cloudinary.com/dn5lpurr4/image/upload/v1639580336/development/santa_nippsl.jpg')
@@ -119,7 +119,7 @@ offers8 = Offer.new(location: "France", availability: Date.new(2021, 12, 21), pr
                     title: "The real Santa",
                     santa_description: "Since a long time, I bring joy to all the childs in the world.")
 offers8.user = santa
-offers8.photo.attach(io: image8, filename: 'romeopic', content_type: 'image/jpg')
+offers8.photo.attach(io: image8, filename: 'romeopic', content_type: 'image/png')
 offers8.save!
 
 puts "-----offer created-----"
